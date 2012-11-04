@@ -1,0 +1,37 @@
+{% extends 'template.html' %}
+{% load staticfiles %}
+
+{% block module_style %}
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% endblock %}
+
+{% block wrapper %}
+
+    <div class="container">
+        <div class="row">
+            <div class="span9">
+                {% block content %}{% endblock %}
+            </div>
+            <div class="span3">
+                <div id="categories">
+                    {% load mptt_tags %}
+                    <ul>
+                    	{% if nodes %}
+	                        {% recursetree nodes %}
+	                            <li>
+	                                <a href="{% url blog-category id=node.id slug=node.slug %}">{{ node.title }}</a>
+	                                {% if not node.is_leaf_node %}
+	                                    <ul class="children">
+	                                        {{ children }}
+	                                    </ul>
+	                                {% endif %}
+	                            </li>
+	                        {% endrecursetree %}
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

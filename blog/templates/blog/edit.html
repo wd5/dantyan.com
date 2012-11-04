@@ -1,0 +1,39 @@
+{% extends 'blog/blog_wrapper.html' %}
+
+{% load bootstrap %}
+{% load staticfiles %}
+{% block header_code %}
+	{{ form.media }}
+	<link rel="stylesheet" href="{% static 'css/blog/edit.css' %}">
+{% endblock %}
+
+{% block wrapper %}
+	<div class="container">
+		{{ form.non_field_errors }}
+		
+		{% if form.errors %}
+			<div id="form-error">
+				<p>The operation could not be performed because one or more error(s) occurred.<br />Please resubmit the form after making the following changes:</p>
+				<ul>
+				{% for field in form %}
+				<li>{{ field.errors|striptags }}</li>
+				{% endfor %}
+				</ul>
+			</div>
+		{% else %}
+			no errors
+		{% endif %}
+		
+		<form action="" method="post">
+			{{ form|bootstrap }}
+			<div class="form-actions">
+				{% csrf_token %}
+				{% for hidden in form.hidden_fields %}
+    				{{ hidden }}
+    			{% endfor %}
+				<input type="submit">
+			</div>
+		</form>
+		
+	</div>
+{% endblock %}

@@ -1,0 +1,110 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="ru"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="ru"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="ru"> <![endif]-->
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ru"> <!--<![endif]-->
+<head>
+    {% load staticfiles %}
+
+
+    
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <title>{% block title %}{% endblock %}</title>
+
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'css/common.css' %}">
+
+
+        {% block module_style %}{% endblock %}
+
+        {% block template_style %}{% endblock %}
+
+        {% block custom_css %}{% endblock %}
+
+        <script src="{% static 'js/libs/modernizr-2.6.2.min.js' %}"></script>
+
+
+        <script src="{% static 'js/jquery/jquery.min.js' %}"></script>
+
+        <script>window.jQuery || document.write('<scr'+'ipt src="{% static 'js/jquery.min.js' %}"><\/scr'+'ipt>');</script>
+      	<script>      	
+      		var django = {
+    			"jQuery": jQuery.noConflict(true)
+			};
+			var jQuery = django.jQuery;
+			var $ = jQuery;
+      	</script>
+
+        {% if settings.IN_PRODUCTION %}
+            {% block google_analytics %}{% endblock %}
+            <script>
+                var _gaq = window._gaq || [];
+                window.onerror = function(msg, url, line) {
+                    var preventErrorAlert = true;
+                    _gaq.push(['_trackEvent', 'JS Error', msg, navigator.userAgent + ' -> ' + url + " : " + line]);
+                    return preventErrorAlert;
+                };
+                jQuery.error = function (message) {
+                    _gaq.push(['_trackEvent', 'jQuery Error', message, navigator.userAgent]);
+                }
+            </script>
+        {% endif %}
+
+        <script src="{% static 'js/common.js' %}"></script>
+
+        {% block custom_js %}{% endblock %}
+
+        <meta name="description" content="{% block meta_description %}{{ data.page.meta.description }}{% endblock %}">
+        <meta name="keywords" content="{% block meta_keywords %}{{ data.page.meta.keywords }}{% endblock %}">
+
+        <meta name="author" content="">
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+        {% block header_code %}{% endblock %}
+        {% block yandex_meta %}{% endblock %}
+
+
+    
+
+</head>
+<body>
+
+    {% block top %}{% endblock %}
+
+    <div id="wrapper">
+        <div id="main">
+
+            {% block header %}{% endblock %}
+
+            {% block wrapper %}
+                {% block content %}{% endblock %}
+            {% endblock %}
+
+        </div>
+    </div>
+
+    {% block footer %}{% endblock %}
+
+    <script type="text/javascript" src="{% static 'js/plugins.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/libs/bootstrap.min.js' %}"></script>
+
+    {% block footer_code %}{% endblock %}
+
+    {% if settings.IN_PRODUCTION %}
+        {% block yandex_metrika %}{% endblock %}
+    {% endif %}
+
+
+</body>
+</html>

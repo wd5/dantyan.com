@@ -1,0 +1,11 @@
+
+	{% for post in posts %}
+		<h2><a href="{% url blog-post id=post.id slug=post.slug %}">{{ post.title }}</a></h2>
+
+		{% autoescape off %}
+			{{ post.content }}
+		{% endautoescape %}
+
+	{% empty %}
+		empty
+	{% endfor %}
