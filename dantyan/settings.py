@@ -6,13 +6,13 @@ IN_PRODUCTION = False
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-ADMINS = ( 
+ADMINS = (
     # ('Your Name', 'your_email@example.com'),
  )
 
 MANAGERS = ADMINS
 
-SEND_BROKEN_LINK_EMAILS = True
+
 
 DATABASES = {
     'default': {
@@ -74,7 +74,7 @@ ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 #STATICFILES_DIRS = DEBUG and ('/home/dan/www/zokidjango/dantyan/dantyan/static/',) or None
 
 # Additional locations of static files
-STATICFILES_DIRS = ( 
+STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -91,7 +91,7 @@ MEDIA_URL = '/media/'
 
 STATIC_ROOT = os.path.join( _PATH, 'files', 'static' )
 STATIC_URL = '/static/'
-STATICFILES_DIRS = ( 
+STATICFILES_DIRS = (
     os.path.join( _PATH, 'static' ),
  )
 #STATICFILES_FINDERS = (
@@ -114,7 +114,7 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # List of finder classes that know how to find static files in
 # various locations.
-STATICFILES_FINDERS = ( 
+STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
@@ -124,7 +124,7 @@ STATICFILES_FINDERS = (
 SECRET_KEY = 'ral^13h-+@fiyzp&amp;b14obg1lgez_g=wd8-y2%9ks^hj)dg(fa-'
 
 # List of callables that know how to import templates from various sources.
-TEMPLATE_LOADERS = ( 
+TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
@@ -132,7 +132,7 @@ TEMPLATE_LOADERS = (
 
 INTERNAL_IPS = ( '127.0.0.1', )
 
-MIDDLEWARE_CLASSES = ( 
+MIDDLEWARE_CLASSES = (
 	'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -149,7 +149,7 @@ ROOT_URLCONF = 'dantyan.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'dantyan.wsgi.application'
 
-TEMPLATE_DIRS = ( 
+TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -158,7 +158,7 @@ TEMPLATE_DIRS = (
     '/home/dan/www/zokidjango/dantyan/blog/templates',
  )
 
-TEMPLATE_CONTEXT_PROCESSORS = ( 
+TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.contrib.messages.context_processors.messages',
     'django.core.context_processors.debug',
@@ -171,7 +171,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 #    'blog.context_processors.common',
  )
 
-INSTALLED_APPS = ( 
+INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -248,7 +248,7 @@ INSTALLED_APPS += ('bootstrapform',)
 # django categories
 #--------------------------------
 
-#INSTALLED_APPS += ( 
+#INSTALLED_APPS += (
 #    'categories',
 #    'categories.editor',
 # )
